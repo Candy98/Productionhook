@@ -29,7 +29,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     MainActivity snackBuilder;
     View myView;
     ProgressDialog progressDialog;
-LO
+Process p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
