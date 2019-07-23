@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etEmail, etPwd;
     Button login;
     View fgPwd, vReg, myView;
-
+    LinkageError l;
     String emailFormat = "[[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+]";
     boolean isOkEmail = false;
     boolean isOkPwd = false;
