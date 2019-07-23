@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isOkEmail = false;
     boolean isOkPwd = false;
     ProgressDialog progressDialog;
+    Int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
