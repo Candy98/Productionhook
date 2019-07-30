@@ -71,8 +71,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void isParseUserLoggedIn() {
         if (ParseUser.getCurrentUser() != null) {
-            ParseUser.getCurrentUser().logOut();
+            //ParseUser.getCurrentUser().logOut();
         }
+    }
+
+    private void TransitionToSocialMedia() {
+        startActivity(new Intent(MainActivity.this, SocialMedia.class));
     }
 
     private void parseLogin() {
@@ -84,7 +88,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void done(ParseUser user, ParseException e) {
                     if (user != null && e == null) {
-                        successSnackBuilder(user.get("username") + "Logged in", myView);
+                        FancyToast.makeText(MainActivity.this, user.get("username")+" "+"successfully logged in", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
+
+                        TransitionToSocialMedia();
+
                     } else {
                         errorSnackBuilder(e.getMessage(), myView);
                     }
