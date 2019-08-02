@@ -10,8 +10,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,22 +25,44 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 import de.mateware.snacky.Snacky;
 
-public class Registration extends AppCompatActivity {
+public class StudentRegActivity extends AppCompatActivity {
     View vLog, myView;
     EditText etFullName, etEmail, etPwd, etRePwd, etPhNo;
     Button regBtn;
+    String selectedCourse;
     boolean isUname = false, isEmail = false, isPhnNo = false, isPwd = false, isRePwdMach = false;
-    MainActivity sucSnack;
+    TutorLoginActivity sucSnack;
     ProgressDialog progressDialog;
     Intent intent;
+    ArrayAdapter<String> arrayAdapter;
+
+    String[] tutorTypes = {"Select Course", "BCA", "Btech", "Primary School", "High School", "Higher Secondary"};
+    Spinner spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_registration_tutor);
         viewBinder();
         objInitializer();
-        intent = new Intent(Registration.this, MainActivity.class);
+        //intent = new Intent(TutorRegistrationActivity.this, TutorLoginActivity.class);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tutorTypes);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i>0){
+                    selectedCourse= (String) spinner.getItemAtPosition(i);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         vLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,7 +93,7 @@ public class Registration extends AppCompatActivity {
     }
 
     private void objInitializer() {
-        sucSnack = new MainActivity();
+        sucSnack = new TutorLoginActivity();
         progressDialog = new ProgressDialog(this);
     }
 
@@ -80,6 +105,7 @@ public class Registration extends AppCompatActivity {
             appUser.setPassword(etPwd.getText().toString());
             appUser.setEmail(etEmail.getText().toString());
             appUser.put("Phone", etPhNo.getText().toString());
+            appUser.put("Selectedcourse",selectedCourse);
             progressDialog.setMessage("Registering " + etFullName.getText());
 
             progressDialog.show();
@@ -87,7 +113,7 @@ public class Registration extends AppCompatActivity {
                 @Override
                 public void done(ParseException e) {
                     if (e == null) {
-                        successSnackBuilderLengthLong("Registration success " + etFullName.getText().toString(), myView);
+                        successSnackBuilderLengthLong("TutorRegistrationActivity success " + etFullName.getText().toString(), myView);
 
                     } else {
                         sucSnack.errorSnackBuilder(e.getMessage(), myView);
@@ -177,13 +203,15 @@ public class Registration extends AppCompatActivity {
 
     private void viewBinder() {
         vLog = findViewById(R.id.vLog);
-        etFullName = findViewById(R.id.etFullname);
-        etEmail = findViewById(R.id.etEmail);
-        etPwd = findViewById(R.id.etPwd);
-        etRePwd = findViewById(R.id.etRePwd);
-        etPhNo = findViewById(R.id.etPhno);
-        regBtn = findViewById(R.id.regBtn);
-        myView = findViewById(R.id.regLayout);
+        etFullName = findViewById(R.id.etFullnameSt);
+        etEmail = findViewById(R.id.etEmailSt);
+        etRePwd = findViewById(R.id.etRePwdSt);
+        etPwd = findViewById(R.id.etPwdSt);
+        etRePwd = findViewById(R.id.etRePwdSt);
+        etPhNo = findViewById(R.id.etphoneNoSt);
+        regBtn = findViewById(R.id.regBtnSt);
+        myView = findViewById(R.id.regLayoutSt);
+        spinner = findViewById(R.id.spinnerSelectedCourseSt);
 
     }
 
@@ -210,8 +238,8 @@ public class Registration extends AppCompatActivity {
     }
 
     private void successActionTriggered() {
-        startActivity(new Intent(Registration.this, MainActivity.class));
-        Registration.this.finish();
+        startActivity(new Intent(StudentRegActivity.this, TutorLoginActivity.class));
+        StudentRegActivity.this.finish();
     }
 
 

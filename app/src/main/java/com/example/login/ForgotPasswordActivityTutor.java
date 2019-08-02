@@ -22,20 +22,20 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.List;
 
-public class ForgotPasswordActivity extends AppCompatActivity {
+public class ForgotPasswordActivityTutor extends AppCompatActivity {
     EditText etEmail;
     Button submitEmailFgp;
     boolean isOkEmail = false;
-    MainActivity snackBuilder;
+    TutorLoginActivity snackBuilder;
     View myView;
     ProgressDialog progressDialog;
 Process p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password);
+        setContentView(R.layout.activity_forgot_password_tutor);
         viewBinder();
-        snackBuilder = new MainActivity();
+        snackBuilder = new TutorLoginActivity();
         progressDialog = new ProgressDialog(this);
 
         submitEmailFgp.setOnClickListener(new View.OnClickListener() {

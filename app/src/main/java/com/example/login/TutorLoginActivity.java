@@ -12,6 +12,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,10 +23,12 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 import de.mateware.snacky.Snacky;
 
-public class MainActivity extends AppCompatActivity {
+public class TutorLoginActivity extends AppCompatActivity {
     EditText etEmail, etPwd;
     Button login;
     View fgPwd, vReg, myView;
+    Spinner spinner;
+    String selectedTeacherType;
 
     String emailFormat = "[[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+]";
     boolean isOkEmail = false;
@@ -51,10 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        SetTutorType();
         fgPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ForgotPasswordActivity.class));
+                startActivity(new Intent(TutorLoginActivity.this, ForgotPasswordActivityTutor.class));
             }
         });
 
@@ -62,11 +66,14 @@ public class MainActivity extends AppCompatActivity {
         vReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Registration.class));
+                startActivity(new Intent(TutorLoginActivity.this, TutorRegistrationActivity.class));
 
             }
         });
         isParseUserLoggedIn();
+    }
+
+    private void SetTutorType() {
     }
 
     private void isParseUserLoggedIn() {
@@ -76,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void TransitionToSocialMedia() {
-        startActivity(new Intent(MainActivity.this, SocialMedia.class));
     }
 
     private void parseLogin() {
@@ -88,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void done(ParseUser user, ParseException e) {
                     if (user != null && e == null) {
-                        FancyToast.makeText(MainActivity.this, user.get("username")+" "+"successfully logged in", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
+                        FancyToast.makeText(TutorLoginActivity.this, user.get("username") + " " + "successfully logged in", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
 
                         TransitionToSocialMedia();
 
@@ -121,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         fgPwd = findViewById(R.id.tvFgPwd);
         vReg = findViewById(R.id.vReg);
         myView = findViewById(R.id.logView);
+        spinner = findViewById(R.id.spinnerTuts);
 
     }
 

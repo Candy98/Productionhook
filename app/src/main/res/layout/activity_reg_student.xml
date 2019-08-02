@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/regLayoutSt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TutorRegistrationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            android:background="@drawable/shape_layout">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+
+                android:src="@drawable/ic_android_black_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+
+
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Registration"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:layout_marginTop="80dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etFullnameSt"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_ed"
+                    android:drawableLeft="@drawable/full_name_draw"
+                    android:hint="Student Name"
+                    android:padding="20dp"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textColorHint="#000000" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></View>
+
+                <EditText
+                    android:id="@+id/instName"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:background="@drawable/shape_ed"
+                    android:drawableLeft="@drawable/ic_schoolicon"
+                    android:hint="Institute Name"
+                    android:padding="20dp"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textColorHint="#000000"
+                    />
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"></View>
+                <EditText
+                    android:id="@+id/etEmailSt"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:background="@drawable/shape_ed"
+                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:hint="Email"
+                    android:padding="20dp"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textColorHint="#000000"
+                    />
+
+                <EditText
+                    android:id="@+id/etphoneNoSt"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_ed"
+                    android:hint="Phone no"
+                    android:drawableLeft="@drawable/ic_phone_black_24dp"
+                    android:padding="20dp"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textColorHint="#000000"
+                    />
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"></View>
+                <Spinner
+                    android:id="@+id/spinnerSelectedCourseSt"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_ed"
+                    ></Spinner>
+                <EditText
+                    android:id="@+id/etPwdSt"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_ed"
+                    android:hint="Enter Passsword"
+                    android:textAlignment="center"
+                    android:textColorHint="#000000"
+                    android:inputType="textPassword"
+                    android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
+                    android:padding="20dp"
+                    android:singleLine="true"/>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"></View>
+
+
+                <EditText
+                    android:id="@+id/etRePwdSt"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_ed"
+                    android:hint="Re-Enter Password"
+                    android:textAlignment="center"
+                    android:textColorHint="#000000"
+                    android:inputType="textPassword"
+                    android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
+                    android:padding="20dp"
+                    android:singleLine="true"/>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"></View>
+
+
+                <Button
+                    android:id="@+id/regBtnSt"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/shape_btn"
+                    android:text="Register"
+                    android:textColor="@android:color/white"
+
+
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>
